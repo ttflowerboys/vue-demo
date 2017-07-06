@@ -27,13 +27,8 @@
 <script>
   import ZHeader from 'components/header';
 
-  import Vue from 'vue';
-  import iView from 'iview';
-  import 'iview/dist/styles/iview.css';
-  Vue.use(iView);
-
-
   import { Notice } from 'iview';
+
 
 
   export default {
@@ -78,8 +73,23 @@
         }
       },
       checkUser(){
+        const _this = this;
         if (this.verifyPhone() && this.verifyCode() && this.verifySMS()) {
+          this.$store.dispatch('login',this.login).then(function(){
+              //console.log(JSON.stringify(_this.$store.state))
+              if(_this.$store.state.login.seccLogin){
+                  _this.$Notice.success({
+                    desc: '登录成功！',
+                    onClose: function(){
+                      location.href = '/views/user/index.html';
+                    }
+                  });
+                  _this.$store.state.login.seccLogin = 0;
 
+              }else{
+                  _this.$Notice.error({desc: '登录失败！'});
+              }
+          })
         }
       },
       sendSMS(){
