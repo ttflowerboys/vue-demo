@@ -1,18 +1,19 @@
 <template>
-	<div class="login">
+  <div class="login">
       <ZHeader></ZHeader>
-		  <div class="section vertical">
+      <div class="section vertical">
         <div class="content-1">
           <h2 class="title">欢 迎 来 到 政 务 云 平 台</h2>
           <form>
-            <div class="items"><input class="login-ipt" type="text" placeholder="手机号" autocomplete="off" autofocus="autofocus"/></div>
-            <div class="items"><input class="login-ipt login-ipt-v" type="text" placeholder="验证码" autocomplete="off" />
-              <a href="">发送验证码</a>
-            </div>
-            <div class="items"><input class="login-ipt login-ipt-v" type="text" placeholder="图形验证码" autocomplete="off" />
+            <div class="items"><input class="login-ipt" type="text" placeholder="手机号" autocomplete="off" autofocus="autofocus" v-model="login.phone"/></div>
+            <div class="items"><input class="login-ipt login-ipt-v" type="text" placeholder="图形验证码" autocomplete="off" v-model="login.codeVerify"/>
               <a href=""><img src=""/></a>
             </div>
-            <div class="items"><button class="login-commit" type="button">登 录</button></div>
+            <div class="items"><input class="login-ipt login-ipt-v" type="text" placeholder="验证码" autocomplete="off"  v-model="login.verify"/>
+              <a href="javascript:;" @click="sendSMS()">{{sendString}}</a>
+            </div>
+
+            <div class="items"><button class="login-commit" type="button" @click="checkUser()">登 录</button></div>
           </form>
         </div>
       </div>
@@ -20,18 +21,75 @@
           地址: 武汉市江汉区香港路259号 邮编: 430015 鄂ICP备10041712号 技术支持：武汉中润普达<br> Copyright 2016 © All rights reserverd by WuHan Administrator
           for Industry &amp; Commerce Powered by ZRPD
       </div>
-	</div>
+  </div>
 </template>
 
 <script>
   import ZHeader from 'components/header';
 
-	export default {
-		name: 'login',
+  import Vue from 'vue';
+  import iView from 'iview';
+  import 'iview/dist/styles/iview.css';
+  Vue.use(iView);
+
+
+  import { Notice } from 'iview';
+
+
+  export default {
+    name: 'login',
     components: {
-      ZHeader
+      ZHeader,
+      Notice
+    },
+    data() {
+      return {
+        login:{
+          phone: '',
+          verify: '',
+          codeVerify: ''
+        },
+        sendString: '发送验证码'
+      }
+    },
+    methods:{
+      verifyPhone(){
+        if (this.login.phone=='' || this.login.phone< 13000000000 || this.login.phone>18999999999) {
+          this.$Notice.error({desc: '手机号不正确'});
+          return false;
+        }else{
+          return true;
+        }
+      },
+      verifySMS(){
+        if (this.login.verify=='' || this.login.verify.length<6) {
+          this.$Notice.error({desc: '手机验证码不正确'});
+          return false;
+        }else{
+          return true;
+        }
+      },
+      verifyCode(){
+        if (this.login.codeVerify == '' || this.login.codeVerify < 6) {
+          this.$Notice.error({desc: '请输入图形验证码：123123'});
+          return false;
+        }else{
+          return true;
+        }
+      },
+      checkUser(){
+        if (this.verifyPhone() && this.verifyCode() && this.verifySMS()) {
+
+        }
+      },
+      sendSMS(){
+        if (this.verifyPhone() && this.verifyCode()) {
+          this.sendString = '正在发送验证码';
+          this.$Notice.success({desc: '手机验证码：123456'});
+        }
+      }
     }
-	}
+  }
 </script>
 
 <style lang="less">
