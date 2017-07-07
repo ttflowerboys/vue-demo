@@ -42,7 +42,7 @@
             <Table border :columns="columns4" :data="list" stripe></Table>
             <div style="margin: 10px;overflow: hidden">
                 <div style="float: right;">
-                    <Page :total="listLength" :current="1" @on-change="changePage"></Page>
+                    <Page :total="listLength" :page-size="5" :current="1" @on-change="changePage"></Page>
                 </div>
             </div>
           </div>
@@ -61,7 +61,9 @@
   import { Notice,Form,Table,Button,Modal,Message } from 'iview';
   import { Tree } from 'element-ui'
 
-  import { asideListData,ArticleListData } from 'src/service/getData.js'
+  import { asideListData } from 'src/service/getData.js'
+
+  import ajax from 'src/assets/js/ajax.js'
 
   export default {
     name: 'user',
@@ -81,7 +83,9 @@
             },
             {
                 title: '序号',
-                key: 'no'
+                width: 80,
+                align: 'center',
+                key: 'id'
             },
             {
                 title: '标题',
@@ -89,14 +93,16 @@
             },
             {
                 title: '更新时间',
-                key: 'update',
+                key: 'addtime',
+                width: 148,
                 render: (h, params) => {
-                    return h('div', this.formatDate(this.list[params.index].update));
+                    return h('div', this.formatDate(this.list[params.index].addtime));
                 }
             },
             {
                 title: '发布者',
-                key: 'name'
+                width: 100,
+                key: 'author'
             },
             {
                 title: '操作',
@@ -150,12 +156,19 @@
       asideListData().then(res => {
         this.tree=res;
       }),
-      ArticleListData().then(res => {
-        this.list = res;
-        this.listLength = res.length;
-      })
+      this.getList()
     },
     methods: {
+      getList(data){
+        var self = this;
+          ajax({
+          'url':'list.php',
+          'success':function (res){
+            self.list = res.data;
+            self.listLength = res.total;
+          }
+        });
+      },
       handleNodeClick(data) {
         this.$Notice.success({desc: '你点击了：'+data.label});
       },
@@ -171,31 +184,36 @@
       show (index) {
           this.$Modal.info({
               title: '标题信息',
-              content: `标题：${this.list[index].title}<br>更新时间：${this.formatDate(this.list[index].update)}<br>发布者：${this.list[index].name}`
+              content: `标题：${this.list[index].title}
+              <br>更新时间：${this.formatDate(this.list[index].addtime)}
+              <br>发布者：${this.list[index].author}
+              <br>内容：${this.list[index].content}`
           })
       },
       remove (index) {
           this.list.splice(index, 1);
       },
-      changePage () {
-          //this.list = this.mockTableData1();
+      changePage (data) {
+          var self = this;
+          ajax({
+          'url':'list.php',
+          'data':{'page':data},
+          'success':function (res){
+            self.list = res.data;
+          }
+        });
       },
       deleteArr () {
         this.$Notice.info({desc: '稍等，正在开发中。。。'});
       },
       formatDate (date) {
-          const time = new Date(date)
+          const time = new Date(parseInt(date) * 1000)
           let y = time.getFullYear();
           let m = this.addZero(time.getMonth() + 1);
-          //m = m < 10 ? '0' + m : m;
           let d = this.addZero(time.getDate());
-          // d = d < 10 ? ('0' + d) : d;
           let h = this.addZero(time.getHours());
-          //h = h < 10 ? ('0' + h) : h;
           let mm = this.addZero(time.getMinutes());
-          //mm = mm < 10 ? ('0' + mm) : mm;
           let s = this.addZero(time.getSeconds());
-          //s = s < 10 ? ('0' + s) : s;
           return y + '-' + m + '-' + d + ' ' + h + ':' + mm;
       },
       addZero (val) {
@@ -246,6 +264,9 @@
         }
       }
     }
+  }
+  .header{
+    position: relative!important;
   }
   .header-wrap{
     width: 100%;
