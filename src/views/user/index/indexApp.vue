@@ -3,7 +3,7 @@
       <ZHeader></ZHeader>
       <div class="w clearfix">
         <div class="aside">
-          aside
+          <el-tree class="myTree" :data="tree" :props="defaultProps" @node-click="handleNodeClick" default-expand-all :indent="10"></el-tree>
         </div>
         <div class="Main">
           <h1 class="title">名标名录管理</h1>
@@ -31,15 +31,20 @@
               <button type="button" class="search-btn search-btn-red">搜索</button>
               <div class="ivu-form-item">
                 <button type="button" class="search-btn search-btn-red" @click="add()">增加</button>
-                <button type="button" class="search-btn search-btn-red">编辑</button>
-                <button type="button" class="search-btn search-btn-red">删除</button>
+                <!-- <button type="button" class="search-btn search-btn-red">编辑</button> -->
+                <button type="button" class="search-btn search-btn-red" @click="deleteArr()">删除</button>
               </div>
 
           </Form>
 
           <div class="noData" v-show="list.length==0"></div>
           <div v-show="list.length>0">
-            <Table border :columns="columns4" :data="list"></Table>
+            <Table border :columns="columns4" :data="list" stripe></Table>
+            <div style="margin: 10px;overflow: hidden">
+                <div style="float: right;">
+                    <Page :total="listLength" :current="1" @on-change="changePage"></Page>
+                </div>
+            </div>
           </div>
 
 
@@ -53,33 +58,21 @@
 <script>
   import ZHeader from 'components/header';
 
-  import { Notice,Form,Table,Button,Modal } from 'iview';
+  import { Notice,Form,Table,Button,Modal,Message } from 'iview';
+  import { Tree } from 'element-ui'
 
-
+  import { asideListData,ArticleListData } from 'src/service/getData.js'
 
   export default {
     name: 'user',
     components: {
-      ZHeader
-      // ,Notice,
-      // Form
+      ZHeader,
+      Tree
     },
     data () {
       return {
-        list:[
-          {
-              no: 1,
-              title: '北京市朝阳区芍药居',
-              name: '王小明',
-              uptime: '2017-1-7'
-          },
-          {
-              no: 2,
-              title: '北京市朝阳区芍药居',
-              name: '王明',
-              uptime: '2017-2-7'
-          }
-        ],
+        list: [],
+        listLength:0,
         columns4: [
             {
                 type: 'selection',
@@ -96,7 +89,10 @@
             },
             {
                 title: '更新时间',
-                key: 'uptime'
+                key: 'update',
+                render: (h, params) => {
+                    return h('div', this.formatDate(this.list[params.index].update));
+                }
             },
             {
                 title: '发布者',
@@ -141,24 +137,71 @@
         formItem: {
           input: '',
           select: ''
+        },
+        tree: [],
+        defaultProps: {
+          children: 'children',
+          label: 'label'
         }
+
       }
     },
+    mounted(){
+      asideListData().then(res => {
+        this.tree=res;
+      }),
+      ArticleListData().then(res => {
+        this.list = res;
+        this.listLength = res.length;
+      })
+    },
     methods: {
+      handleNodeClick(data) {
+        this.$Notice.success({desc: '你点击了：'+data.label});
+      },
       add(){
-        location.href="/views/user/add.html"
+        this.$Message.loading({
+          content: '我要去添加信息。。。',
+          duration: 3,
+          onClose: function(){
+            location.href="/views/user/add.html"
+          }
+        });
       },
       show (index) {
           this.$Modal.info({
-              title: '用户信息',
-              content: `标题：${this.list[index].title}<br>更新时间：${this.list[index].uptime}<br>发布者：${this.list[index].name}`
+              title: '标题信息',
+              content: `标题：${this.list[index].title}<br>更新时间：${this.formatDate(this.list[index].update)}<br>发布者：${this.list[index].name}`
           })
       },
       remove (index) {
           this.list.splice(index, 1);
+      },
+      changePage () {
+          //this.list = this.mockTableData1();
+      },
+      deleteArr () {
+        this.$Notice.info({desc: '稍等，正在开发中。。。'});
+      },
+      formatDate (date) {
+          const time = new Date(date)
+          let y = time.getFullYear();
+          let m = this.addZero(time.getMonth() + 1);
+          //m = m < 10 ? '0' + m : m;
+          let d = this.addZero(time.getDate());
+          // d = d < 10 ? ('0' + d) : d;
+          let h = this.addZero(time.getHours());
+          //h = h < 10 ? ('0' + h) : h;
+          let mm = this.addZero(time.getMinutes());
+          //mm = mm < 10 ? ('0' + mm) : mm;
+          let s = this.addZero(time.getSeconds());
+          //s = s < 10 ? ('0' + s) : s;
+          return y + '-' + m + '-' + d + ' ' + h + ':' + mm;
+      },
+      addZero (val) {
+        return val = val < 10 ? ('0' + val) : val;
       }
     }
-
   }
 </script>
 
@@ -238,5 +281,47 @@
   }
   .ivu-select-single .ivu-select-selection{
     width: 66px;
+  }
+  .myTree{
+    .el-tree-node__expand-icon{
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -6px;
+      &:after{
+        position: absolute;
+        top: -6px;
+        left: -9px;
+        content: "";
+        width: 0;
+        height: 0;
+        z-index: 2;
+        overflow: hidden;
+        display: block;
+        border: 6px solid transparent;
+        border-right-width: 0;
+        border-left-color: #fff;
+        border-left-width: 7px;
+      }
+    }
+    .el-tree-node__content{
+      position: relative;
+      border-bottom: 1px solid #d1dbe5;
+      &:hover{
+        .el-tree-node__expand-icon:after{
+          border-left-color: #e4e8f1;
+        }
+      }
+    }
+    .el-tree-node__label{
+      margin-left: 16px;
+    }
+    .is-current{
+      .el-tree-node__label{
+        color: #f03;
+      }
+
+    }
+
   }
 </style>
