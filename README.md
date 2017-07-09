@@ -42,6 +42,9 @@
 └── README.md
 ```
 
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
 ## 多入口
 | column | column |
 |--------|--------|
@@ -49,23 +52,21 @@
 |  glob | var glob = require('glob'); // glob模块，用于读取webpack入口目录文件 |
 
 
+# 三镇网络科技有限公司
 
+## 说明
+* 营销官网：`http://www.threetowns.cn`
+* 技术支持：`http://www.flowerboys.cn`
 
+## 技术支持
+>[三镇网络技术有限公司](http://www.threetowns.cn)，专注于网络营销、电子商务和企业定制化建站服务，把正确的营销方向当作一种使命，帮助客户提供专业的网络营销方案。其雄厚的实力，专业的营销团队一直活跃于各大电子商务平台的前线。
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+***
 
+## 联系方式
 
-http://blog.lanchenglv.com/article/vue2-webpack2-cli-vux2-multe-page.html
+* EMAIL联系方式：`threetowns@163.com`
 
-http://localhost:8882/find/friendcircle
-
-https://mrleo.gitbooks.io/books/content/codes/Vue/vue-cli%E5%A4%9A%E9%A1%B5%E5%BA%94%E7%94%A8.html
-
-http://www.jianshu.com/p/acbff04b4096
-
-https://vuxjs.gitbooks.io/vux/content/
-
-http://thunf.me/2017/02/17/20170217-grace-vue-boilerplate/
-
-
-http://blog.csdn.net/m0_37558869/article/details/72803128
+| 官方网站 | 技术微信 | 技术QQ | QQ交流群 |
+|--------|--------|--------|--------|
+|![qq-1209445709](https://github.com/threetowns/About/raw/master/qrCode/website_threetowns.cn.jpg)|![wechat-433238694](https://github.com/threetowns/About/raw/master/qrCode/wechat_yonger_lei.jpg)|   ![qq-1209445709](https://github.com/threetowns/About/raw/master/qrCode/qq_1209445709.jpg)     |    ![qq-433238694](https://github.com/threetowns/About/raw/master/qrCode/qqGroup_433238694.jpg)    |
