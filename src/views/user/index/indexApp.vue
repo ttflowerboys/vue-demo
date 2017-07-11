@@ -160,7 +160,7 @@
       this.getList()
     },
     methods: {
-      getList(data){
+      getList(){
         var self = this;
         this.loading = true;
         ajax({
@@ -196,23 +196,37 @@
           })
       },
       remove (id) {
+          var self = this;
           this.$alert('此操作将永久删除该文件, 是否继续?', '提示', {
             type: 'warning',
             confirmButtonText: '确定',
             callback: action => {
               if (action === 'confirm') {
                 // run your code.
+                ajax({
+                  url: 'do.php',
+                  type: 'post',
+                  data: {action:'remove',id:id},
+                  success: function (res){
+                    if (res.status == 1) {
+                      self.$Notice.success({desc: '操作成功！'});
+                      self.getList()
+                    }else{
+                      self.$Notice.error({desc: '糟糕，出现了一个惊天大BUG!'});
+                    }
+                  }
+                })
               }
             }
           });
           //this.list.splice(index, 1);
       },
-      changePage (data) {
+      changePage (page) {
         var self = this;
         this.tableLoading = true;
         ajax({
           url: 'list.php',
-          data: {'page':data},
+          params: {'page':page},
           success: function (res){
             self.list = res.data;
             setTimeout(()=>{
