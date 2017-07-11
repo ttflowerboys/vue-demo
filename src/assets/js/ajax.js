@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+var qs = require('qs');
 
 
 
@@ -25,9 +25,10 @@ import axios from 'axios';
     }
 
     axios({
-      method: opts.type || 'post',
+      method: opts.type || 'get',
       url: opts.url,
-      params: opts.data || {},
+      params: opts.params || {},
+      data: qs.stringify(opts.data),
       headers: opts.headers || {
           'Content-Type':'application/x-www-form-urlencoded'
       },
