@@ -28,7 +28,7 @@
               <Form-item label="关键字:">
                   <Input v-model="formItem.input" placeholder="请输入关键字"></Input>
               </Form-item>
-              <button type="button" class="search-btn search-btn-red">搜索</button>
+              <button type="button" class="search-btn search-btn-red" @click="search()" v-loading.fullscreen.lock="fullscreenLoading" element-loading-text="拼命加载中">搜索</button>
               <div class="ivu-form-item">
                 <button type="button" class="search-btn search-btn-red" @click="add()">增加</button>
                 <!-- <button type="button" class="search-btn search-btn-red">编辑</button> -->
@@ -150,7 +150,8 @@
           label: 'label'
         },
         loading: false,
-        tableLoading: false
+        tableLoading: false,
+        fullscreenLoading: false
       }
     },
     mounted(){
@@ -234,6 +235,36 @@
             },10);
           }
         });
+      },
+      search (){
+        var self = this;
+        if (this.formItem.input == '') {
+          this.$Notice.error({desc: '关键字不能为空'});
+          return false;
+        }
+        this.fullscreenLoading = true;
+        ajax({
+          url: 'do.php',
+          type: 'post',
+          data: {
+            action:'search',
+            title: self.formItem.input,
+            startdate: self.formItem.startdate,
+            enddate: self.formItem.enddate
+          },
+          success: function (res){
+            if (res.status == 1) {
+              self.list = res.data
+              self.fullscreenLoading = false;
+            }else{
+              self.$Notice.error({desc: '糟糕，出现了一个惊天大BUG!'});
+            }
+          },
+          error: function(req){
+            self.fullscreenLoading = false;
+            self.$Notice.error({desc: '糟糕，出现了一个惊天大BUG2!'});
+          }
+        })
       },
       deleteArr () {
         this.$Notice.info({desc: '稍等，正在开发中。。。'});
