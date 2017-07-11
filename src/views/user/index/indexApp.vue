@@ -254,7 +254,8 @@
           },
           success: function (res){
             if (res.status == 1) {
-              self.list = res.data
+              self.list = res.data;
+              self.listLength = res.total;
               self.fullscreenLoading = false;
             }else{
               self.$Notice.error({desc: '糟糕，出现了一个惊天大BUG!'});
