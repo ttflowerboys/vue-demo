@@ -81,6 +81,7 @@
                   _this.$Notice.success({
                     desc: '登录成功！',
                     onClose: function(){
+                      localStorage.setItem('seccLogin',1)
                       location.href = '/views/user/index.html';
                     }
                   });

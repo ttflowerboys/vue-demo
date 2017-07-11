@@ -158,9 +158,15 @@
       asideListData().then(res => {
         this.tree=res;
       }),
-      this.getList()
+      this.getList(),
+      this.checkStatus()
     },
     methods: {
+      checkStatus(){
+        if(!localStorage.getItem('seccLogin')) {
+          location.href = '/views/login/index.html'
+        }
+      },
       getList(){
         var self = this;
         this.loading = true;
@@ -238,10 +244,10 @@
       },
       search (){
         var self = this;
-        if (this.formItem.input == '') {
-          this.$Notice.error({desc: '关键字不能为空'});
-          return false;
-        }
+        // if (this.formItem.input == '') {
+        //   this.$Notice.error({desc: '关键字不能为空'});
+        //   return false;
+        // }
         this.fullscreenLoading = true;
         ajax({
           url: 'do.php',
@@ -263,7 +269,7 @@
           },
           error: function(req){
             self.fullscreenLoading = false;
-            self.$Notice.error({desc: '糟糕，出现了一个惊天大BUG2!'});
+            self.$Notice.error({desc: '糟糕，出现了一个惊天大BUG!'});
           }
         })
       },
