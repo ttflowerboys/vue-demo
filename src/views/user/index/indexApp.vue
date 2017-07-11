@@ -39,7 +39,7 @@
 
           <div v-loading="loading" element-loading-text="拼命加载中">
             <div class="noData" v-show="list.length==0"></div>
-            <div v-show="list.length>0">
+            <div v-show="list.length>0" v-loading="tableLoading">
               <Table border :columns="columns4" :data="list" stripe></Table>
               <div style="margin: 10px;overflow: hidden">
                   <div style="float: right;">
@@ -48,8 +48,6 @@
               </div>
             </div>
           </div>
-
-
 
         </div>
       </div>
@@ -134,7 +132,7 @@
                             },
                             on: {
                                 click: () => {
-                                    this.remove(params.index)
+                                    this.remove(this.list[params.index].id)
                                 }
                             }
                         }, '删除')
@@ -151,7 +149,8 @@
           children: 'children',
           label: 'label'
         },
-        loading: false
+        loading: false,
+        tableLoading: false
       }
     },
     mounted(){
@@ -165,8 +164,8 @@
         var self = this;
         this.loading = true;
         ajax({
-          'url':'list.php',
-          'success':function (res){
+          url: 'list.php',
+          success: function (res){
             self.list = res.data;
             self.listLength = res.total;
             setTimeout(()=>{
@@ -196,16 +195,29 @@
               <br>内容：${this.list[index].content}`
           })
       },
-      remove (index) {
-          this.list.splice(index, 1);
+      remove (id) {
+          this.$alert('此操作将永久删除该文件, 是否继续?', '提示', {
+            type: 'warning',
+            confirmButtonText: '确定',
+            callback: action => {
+              if (action === 'confirm') {
+                // run your code.
+              }
+            }
+          });
+          //this.list.splice(index, 1);
       },
       changePage (data) {
         var self = this;
+        this.tableLoading = true;
         ajax({
-          'url':'list.php',
-          'data':{'page':data},
-          'success':function (res){
+          url: 'list.php',
+          data: {'page':data},
+          success: function (res){
             self.list = res.data;
+            setTimeout(()=>{
+              self.tableLoading = false;
+            },10);
           }
         });
       },
