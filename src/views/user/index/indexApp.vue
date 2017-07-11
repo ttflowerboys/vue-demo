@@ -37,13 +37,15 @@
 
           </Form>
 
-          <div class="noData" v-show="list.length==0"></div>
-          <div v-show="list.length>0">
-            <Table border :columns="columns4" :data="list" stripe></Table>
-            <div style="margin: 10px;overflow: hidden">
-                <div style="float: right;">
-                    <Page :total="listLength" :page-size="5" :current="1" @on-change="changePage"></Page>
-                </div>
+          <div v-loading="loading" element-loading-text="拼命加载中">
+            <div class="noData" v-show="list.length==0"></div>
+            <div v-show="list.length>0">
+              <Table border :columns="columns4" :data="list" stripe></Table>
+              <div style="margin: 10px;overflow: hidden">
+                  <div style="float: right;">
+                      <Page :total="listLength" :page-size="5" :current="1" @on-change="changePage"></Page>
+                  </div>
+              </div>
             </div>
           </div>
 
@@ -59,7 +61,7 @@
   import ZHeader from 'components/header';
 
   import { Notice,Form,Table,Button,Modal,Message } from 'iview';
-  import { Tree } from 'element-ui'
+  import { Tree,Loading } from 'element-ui'
 
   import { asideListData } from 'src/service/getData.js'
 
@@ -148,8 +150,8 @@
         defaultProps: {
           children: 'children',
           label: 'label'
-        }
-
+        },
+        loading: false
       }
     },
     mounted(){
@@ -161,11 +163,15 @@
     methods: {
       getList(data){
         var self = this;
-          ajax({
+        this.loading = true;
+        ajax({
           'url':'list.php',
           'success':function (res){
             self.list = res.data;
             self.listLength = res.total;
+            setTimeout(()=>{
+              self.loading = false;
+            },10);
           }
         });
       },
@@ -194,8 +200,8 @@
           this.list.splice(index, 1);
       },
       changePage (data) {
-          var self = this;
-          ajax({
+        var self = this;
+        ajax({
           'url':'list.php',
           'data':{'page':data},
           'success':function (res){
