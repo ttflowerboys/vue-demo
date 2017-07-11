@@ -23,8 +23,8 @@
                 </Upload>
               </Form-item>
               <Form-item>
-                  <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
-                  <Button type="ghost" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
+                  <Button type="primary" @click="handleSubmit()">提交</Button>
+                  <Button type="ghost" @click="handleReset()" style="margin-left: 8px">重置</Button>
               </Form-item>
           </Form>
 
@@ -43,6 +43,7 @@
 
   import { Notice,Form,Upload } from 'iview';
 
+  import ajax from 'src/assets/js/ajax.js'
 
 
   export default {
@@ -62,8 +63,24 @@
     },
     methods: {
       handleSubmit () {
+        var self = this;
         if (this.checkTitle() && this.checkContent()) {
-          this.$Notice.success({desc: '发布成功啦！'});
+          ajax({
+            url: 'do.php',
+            type: 'post',
+            data: {
+              action: 'add',
+              title: self.form.title,
+              content: self.form.content
+            },
+            success: function (res){
+              if (res.status == 1) {
+                self.$Notice.success({desc: res.info});
+              }else{
+                self.$Notice.error({desc: '糟糕，出现了一个惊天大BUG!'});
+              }
+            }
+          })
         }
       },
       handleReset () {
@@ -74,8 +91,8 @@
         if (this.form.title == '') {
           this.$Notice.error({desc: '标题不能为空'});
           return false;
-        }else if(this.form.title.length<6 || this.form.title.length>20){
-          this.$Notice.error({desc: '标题长度为6～20个字符'});
+        }else if(this.form.title.length<6){
+          this.$Notice.error({desc: '标题长度大干6个字符'});
           return false;
         }else{
           return true;
