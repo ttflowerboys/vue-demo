@@ -5,13 +5,14 @@
       <div class="loginBar-1 right">
         <div class="list-box vertical">
           <div class="tx-box left"></div>
-          <div class="list-tit">江城工商</div>
-          <div class="list-cont">
+          <div class="list-tit" v-if="status">江城工商</div>
+          <div class="list-cont" v-if="status">
             <div class="list-items">
               <a href="">个人中心</a>
-              <a href="">退出</a>
+              <a href="javascript:;" @click="logout()">退出</a>
             </div>
           </div>
+          <div class="list-tit" v-else @click="goLogin()">请登录</div>
         </div>
       </div>
       <div class="header-1-nav right">
@@ -91,8 +92,41 @@
   winResizeFn();
   window.onresize = winResizeFn;
 
+  import { Message,MessageBox } from 'element-ui'
+
   export default {
-    name: 'header'
+    name: 'header',
+    data() {
+      return {
+        status: localStorage.getItem('seccLogin') ? true : false
+      }
+    },
+    methods: {
+      goLogin(){
+        location.href = '/views/login/index.html'
+      },
+      logout() {
+        var self = this;
+          this.$alert('骚年, 确定要退出?', '提示', {
+            type: 'warning',
+            confirmButtonText: '确定',
+            callback: action => {
+              if (action === 'confirm') {
+                // run your code.
+
+                self.$message({
+                  type: 'success',
+                  message: `恭喜你，操作成功！`,
+                  onClose: function(){
+                    localStorage.clear()
+                    location.href = '/views/login/index.html'
+                  }
+                });
+              }
+            }
+          });
+      }
+    }
   }
 </script>
 
