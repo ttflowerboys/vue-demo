@@ -155,16 +155,17 @@
       }
     },
     mounted(){
-      asideListData().then(res => {
-        this.tree=res;
-      }),
-      this.getList(),
       this.checkStatus()
     },
     methods: {
       checkStatus(){
         if(!localStorage.getItem('seccLogin')) {
           location.href = '/views/login/index.html'
+        }else{
+          asideListData().then(res => {
+            this.tree=res;
+          })
+          this.getList()
         }
       },
       getList(){
