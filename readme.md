@@ -1,13 +1,62 @@
-# 三镇网络科技有限公司
+# vue-zwy-mobile
 
-## 说明
-* 营销官网：`http://www.threetowns.cn`
-* 技术支持：`http://www.flowerboys.cn`
+> 基于`Vue`的单页应用。
+
+##  技术栈
+* `vue`：[https://github.com/vuejs/vue](https://github.com/vuejs/vue)
+* `vuex`：[https://github.com/vuejs/vuex](https://github.com/vuejs/vuex)
+* `vue-router`：[https://github.com/vuejs/vue-router](https://github.com/vuejs/vue-router)
+* `vue-cli`：[https://github.com/vuejs/vue-cli](https://github.com/vuejs/vue-cli)
+* `axios`：[https://github.com/mzabriskie/axios](https://github.com/mzabriskie/axios)
+* `webpack`：[https://github.com/webpack](https://github.com/webpack)
+
+## Root Folder Structure
+```bash
+├── build
+│   ├── build.js
+│   ├── check-versions.js
+│   ├── dev-client.js
+│   ├── dev-server.js
+│   ├── utils.js
+│   ├── vue-loader.conf.js
+│   ├── webpack.base.conf.js
+│   ├── webpack.dev.conf.js
+│   ├── webpack.prod.conf.js
+│   └── webpack.test.conf.js
+├── config
+│   ├── dev.env.js
+│   ├── index.js
+│   ├── prod.env.js
+│   └── test.env.js
+├── src
+│   ├── assets  # common assets folder
+│   │   ├── img
+│   │   │   └── logo.png
+│   │   ├── js
+│   │   └── css
+│   ├── components # common components folder
+│   │   ├── Footer.vue
+│   │   ├── Header.vue
+│   │   └── Index.vue
+│   └── router
+│       └── index.js
+├── static
+│   └── .gitkeep
+├── .babelrc          # babel config (es2015 default)
+├── .editorconfig
+├── .gitignore
+├── .postcssrc.js
+├── index.html
+├── package.json
+└── README.md         # readme
+```
+
+***
 
 ## 技术支持
 >[三镇网络技术有限公司](http://www.threetowns.cn)，专注于网络营销、电子商务和企业定制化建站服务，把正确的营销方向当作一种使命，帮助客户提供专业的网络营销方案。其雄厚的实力，专业的营销团队一直活跃于各大电子商务平台的前线。
-
-***
+>* 营销官网：`http://www.threetowns.cn`
+>* 技术支持：`http://www.flowerboys.cn`
 
 ## 联系方式
 
