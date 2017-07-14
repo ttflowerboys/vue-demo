@@ -1,6 +1,6 @@
 # vue-zwy-mobile
 
-> 基于`Vue`的单页应用。
+> 基于`Vue`的单页应用。文档请看：[Webpack](see http://vuejs-templates.github.io/webpack for documentation.)
 
 ##  技术栈
 * `vue`：[https://github.com/vuejs/vue](https://github.com/vuejs/vue)
@@ -28,7 +28,7 @@ const router = new VueRouter({
 
 所以呢，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 `index.html` 页面，这个页面就是你 app 依赖的页面。
 
-## 后端配置例子
+### 后端配置例子
 
 #### Apache
 >到项目根目录新建 `.htaccess` 文件，内容如下：
