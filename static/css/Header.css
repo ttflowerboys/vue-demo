@@ -1,0 +1,151 @@
+
+.header-box{
+    color: #fff;
+    font-size: .26rem;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+}
+.header-box.index{
+    background-color: #ff0033;
+}
+.header-box.index>.invest-header{
+    display: none;
+}
+.header-box.invest{
+    background-color: #ff0033;
+}
+.header-box.invest>.index-header{
+    display: none;
+}
+.header-box>.status-bar{
+    height: .25rem;
+}
+.header-box>.status-bar.ios{
+    height: .2rem;
+}
+.header-box>.index-header{
+    width: 100%;
+    height: .9rem;
+    line-height: .9rem;
+    background: url(../image/img/index-logo.png) no-repeat center;
+    background-size: 3.2rem .4rem;
+}
+.back-header{
+/* background-color: #fff;*/
+    padding-left: .3rem;
+    width: 100%;
+    height: .9rem;
+    line-height: .9rem;
+    
+}
+.back-header>.back{
+    display: inline-block;
+    background: url(../image/img/back-icon.png) no-repeat center;
+    background-size: .19rem .32rem;
+    width: .19rem;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: .3rem;
+}
+.index-header>.change-city{
+    padding-left: .22rem;
+	display: inline-block;
+    /*background: url("../image/img/go.png") no-repeat right;*/
+    /*background-size: .22rem .13rem;*/
+    /*padding-right: .32rem;*/
+    /*transform: rotateZ(180deg);*/
+    /*-ms-transform:rotate(180deg); 	/!* IE 9 *!/*/
+    /*-moz-transform:rotate(180deg); 	/!* Firefox *!/*/
+    /*-webkit-transform:rotate(180deg); /!* Safari 和 Chrome *!/*/
+    /*-o-transform:rotate(180deg); 	/!* Opera *!/*/
+}
+.index-header>.change-city.hidden{
+	display:none;
+}
+.index-header>.change-city:after{
+    width: .22rem;
+    height: .13rem;
+    content: '';
+    display: inline-block;
+    background: url("../image/img/go.png") no-repeat center;
+    background-size: .22rem .13rem;
+    padding-left: .1rem;
+    line-height: .9rem;
+
+}
+.index-header>.change-city.active:after{
+    transform: rotateZ(-180deg);
+    -ms-transform:rotateZ(-180deg); 	/* IE 9 */
+    -moz-transform:rotateZ(-180deg); 	/* Firefox */
+    -webkit-transform:rotateZ(-180deg); /* Safari 和 Chrome */
+    -o-transform:rotateZ(-180deg); 	/* Opera */
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+.index-footer>.news>span{
+    display: inline-block;
+}
+.index-footer>.news>span>i{
+    background: url(../image/img/index-tab1.png)no-repeat top;
+    background-size: .34rem .34rem;
+    display: inline-block;
+    padding-top: .22rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+}
+.index-footer>.news:hover>span>i,.index-footer>.news.active>span>i{
+    background: url(../image/img/index-tab1-a.png)no-repeat top;
+    background-size: .34rem .34rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+    color: #ee3333;
+}
+.index-footer>.market>span>i{
+    background: url(../image/img/index-tab2.png)no-repeat top;
+    background-size: .44rem .33rem;
+    display: inline-block;
+    padding-top: .22rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+}
+.index-footer>.market:hover>span>i,.index-footer>.market.active>span>i{
+    background: url(../image/img/index-tab2-a.png)no-repeat top;
+    background-size: .44rem .33rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+    color: #ee3333;
+}
+.index-footer>.fund>span>i{
+    background: url(../image/img/index-tab3.png)no-repeat top;
+    background-size: .38rem .33rem;
+    display: inline-block;
+    padding-top: .22rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+}
+.index-footer>.fund:hover>span>i,.index-footer>.fund.active>span>i{
+    background: url(../image/img/index-tab3-a.png)no-repeat top;
+    background-size: .38rem .33rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+    color: #ee3333;
+}
+
+.index-footer>.post-box>span>i{
+    background: url(../image/img/index-tab4.png)no-repeat top;
+    background-size: .36rem .37rem;
+    display: inline-block;
+    padding-top: .22rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+}
+.index-footer>.post-box:hover>span>i,.index-footer>.post-box.active>span>i{
+    background: url(../image/img/index-tab4-a.png)no-repeat top;
+    background-size: .36rem .37rem;
+    background-position-y: .18rem;
+    -ms-background-position-y: .18rem;
+    color: #ee3333;
+}

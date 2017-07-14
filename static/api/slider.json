@@ -1,0 +1,14 @@
+[
+    {
+       "NEWSID": 1,
+       "NEWSTYPE": 1,
+       "IMGURL": "./static/image/m-img/slider1.jpg",
+       "CITY":  1
+    },
+    {
+       "NEWSID": 1,
+       "NEWSTYPE": 1,
+       "IMGURL": "./static/image/m-img/slider2.jpg",
+       "CITY":  1
+    }
+]

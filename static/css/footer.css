@@ -1,0 +1,16 @@
+#footer{
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.index-footer{
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: .2rem;
+    background-color: #0f2c3d;
+    color: #899dac;
+}

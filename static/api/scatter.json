@@ -1,0 +1,59 @@
+{
+    "2015": {
+        "武汉": [
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第一季度",
+                "DISTRICT": "武汉"
+            },
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第二季度",
+                "DISTRICT": "武汉"
+            },
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第三季度",
+                "DISTRICT": "武汉"
+            },
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第四季度",
+                "DISTRICT": "武汉"
+            }
+        ],
+        "长沙": [
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第一季度",
+                "DISTRICT": "长沙"
+            },
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第二季度",
+                "DISTRICT": "长沙"
+            },
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第三季度",
+                "DISTRICT": "长沙"
+            },
+            {
+                "COUNT": 1796,
+                "NOWDATE": "2015",
+                "QUARTER": "第四季度",
+                "DISTRICT": "长沙"
+            }
+        ]
+
+    }
+
+}
+

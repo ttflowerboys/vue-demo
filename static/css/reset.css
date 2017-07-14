@@ -1,0 +1,314 @@
+/* CSS Document */
+
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*清除所有元素外边距内边距*/
+
+body {
+    font-size: 12px;
+    font-family: "microsoft yahei","PingFang SC" ,Arial, Helvetica, sans-serif;
+    color: #000;
+}
+
+/*设置body的文字样式,样式会被除a,button,input,select,textarea的元素继承*/
+
+header,
+footer,
+nav,
+section,
+wrap,
+content {
+    display: block;
+}
+
+/*h5新标签或自定义标签转为块标签*/
+
+/*标签初始化↓*/
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #666;
+}
+
+a:active {
+    background: none;
+}
+
+img {
+    border: none;
+    -ms-interpolation-mode: bicubic;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+input {
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+i,
+b,
+em {
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+    font-family: "microsoft yahei", Arial;
+}
+
+label,
+button {
+    cursor: pointer
+}
+
+button,
+input {
+    *overflow: visible;
+}
+
+iframe {
+    border: 0;
+    outline: none;
+}
+
+/*浮动/清浮动*/
+
+.left {
+    float: left;
+    -display: inline;
+}
+
+.right {
+    float: right;
+    -display: inline;
+}
+
+.autoH {
+    height: auto;
+    overflow: hidden;
+}
+
+.overflow {
+    height: auto;
+    overflow: hidden;
+}
+
+.float-clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+fafter {
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+/*对齐方式*/
+
+.center {
+    text-align: center;
+}
+
+.center > * {
+    display: inline-block;
+    margin-right: -4px;
+    vertical-align: bottom;
+}
+
+.center-children {
+    display: inline;
+    zoom: 1;
+    margin-right: -4px;
+    vertical-align: bottom;
+}
+
+.vertical:after {
+    vertical-align: middle;
+    display: inline-block;
+    width: 0px;
+    height: 100%;
+    content: "";
+    margin-right: -4px;
+}
+
+vafter {
+    vertical-align: middle;
+    display: inline;
+    zoom: 1;
+    width: 0px;
+    height: 100%;
+    margin-right: -4px;
+}
+
+.vertical > * {
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: -4px;
+}
+
+.vertical-children {
+    vertical-align: middle;
+    display: inline;
+    zoom: 1;
+    margin-right: -4px;
+}
+
+/* 输入框placeholder字体颜色*/
+
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+:-moz-placeholder {
+    color: #999;
+}
+
+::-moz-placeholder {
+    color: #999;
+}
+
+:-ms-input-placeholder {
+    color: #999;
+}
+
+/*去掉点击边框*/
+
+*:focus {
+    outline: none;
+}
+
+/*文本对齐*/
+
+.text-c {
+    text-align: center !important;
+}
+
+.text-l {
+    text-align: left !important;
+}
+
+.text-r {
+    text-align: right !important;
+}
+
+.text-lr {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/*文本强制换行*/
+
+.text-qzhh {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+/*文本显示一行,溢出省略...*/
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*隐藏*/
+
+.hide {
+    visibility: hidden;
+}
+
+.none {
+    display: none;
+}
+
+/*黑白滤镜*/
+
+.gray {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-filter: gray;
+    filter: gray;
+}
+
+/*css3弹性盒子*/
+
+.flex-box {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+}
+
+.flex-item {
+    -webkit-box-flex: 1;
+    flex: auto;
+    -ms-flex: auto;
+}
+
+/*媒体查询*/
+
+@media only screen and (max-width: 769px) {
+}
+/*禁止拉伸*/
+textarea {resize: none;}
+/*蒙层*/
+
+.mengceng {
+    position: relative;
+    overflow: hidden;
+}
+
+.mengceng:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .1);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/*旋转180度*/
+.rotate180{
+    transform: rotateZ(-180deg);
+    -ms-transform:rotateZ(-180deg); 	/* IE 9 */
+    -moz-transform:rotateZ(-180deg); 	/* Firefox */
+    -webkit-transform:rotateZ(-180deg); /* Safari 和 Chrome */
+    -o-transform:rotateZ(-180deg); 	/* Opera */
+    transition: all 1s;
+}

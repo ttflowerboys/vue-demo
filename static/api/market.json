@@ -1,0 +1,33 @@
+[
+{
+    "name":"武汉",
+    "textStyle":{
+        "fontSize":10,
+        "color":"#919191"
+    },
+    "icon":"rect"
+},
+{
+    "name":"长沙",
+    "textStyle":{
+        "fontSize":10,
+        "color":"#919191"
+    },
+    "icon":"rect"
+},
+{
+    "name":"合肥",
+    "textStyle":{
+        "fontSize":10,
+        "color":"#919191"
+    },
+    "icon":"rect"
+},
+{
+    "name":"南昌",
+    "textStyle":{
+        "fontSize":10,
+        "color":"#919191"
+    },
+    "icon":"roundRect"
+}
