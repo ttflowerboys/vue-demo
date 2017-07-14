@@ -13,7 +13,7 @@ Vue.prototype.$http = axios  //其他页面在使用axios的时候直接  this.$
 
 
 const router=new VueRouter({
-	mode: 'history',
+	mode:'history',
 	scrollBehavior (to, from, savedPosition) {
 	  return {y : 0}
 	},
