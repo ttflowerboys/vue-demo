@@ -2,9 +2,13 @@
 
 > 基于`Vue`的多面应用。
 
-##  技术栈
+## 技术栈
 * `vue`、`vuex`、`vue-router`、`axios`、`webpack`
 
+## 项目参考地址
+* [vue-cli-multi-page-2.0](https://github.com/bluefox1688/vue-cli-multi-page)
+* [vue2.0-multi-page](https://github.com/luchanan/vue2.0-multi-page)
+* [vue-zwy-pc](https://github.com/ttflowerboys/vue-demo/tree/zwy-pc)
 
 ## Root Folder Structure
 ```bash
@@ -45,24 +49,12 @@
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-
-## 多入口
-| column | column |
-|--------|--------|
-| utils |        |
-|  glob | var glob = require('glob'); // glob模块，用于读取webpack入口目录文件 |
-
-
-# 三镇网络科技有限公司
-
-## 说明
-* 营销官网：`http://www.threetowns.cn`
-* 技术支持：`http://www.flowerboys.cn`
+***
 
 ## 技术支持
 >[三镇网络技术有限公司](http://www.threetowns.cn)，专注于网络营销、电子商务和企业定制化建站服务，把正确的营销方向当作一种使命，帮助客户提供专业的网络营销方案。其雄厚的实力，专业的营销团队一直活跃于各大电子商务平台的前线。
-
-***
+>* 营销官网：`http://www.threetowns.cn`
+>* 技术支持：`http://www.flowerboys.cn`
 
 ## 联系方式
 
