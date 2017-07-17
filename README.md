@@ -4,11 +4,14 @@
 
 ##  技术栈
 * `vue`、`vuex`、`vue-router`、`axios`、`webpack`
-* UI组件：[iView](https://www.iviewui.com/docs/guide/install)
 
 
 ## Root Folder Structure
 ```bash
+├── build
+│   └── ...
+├── config
+│   └── ...
 ├── src  # main folder
 │   ├── assets  # common assets folder
 │   │   ├── img
@@ -24,21 +27,19 @@
 │       │   │   ├── app.vue  # login vue (file name can be customized)
 │       │   │   └── app.html # template html (file name can't be customized unless you change the webpack.config.js)
 │       │   └── index # index.html
-│       │       ├── app.js
-│       │       ├── app.html
-│       │       └── app.vue
+│       │       ├── index.js
+│       │       ├── index.html
+│       │       └── index.vue
 │       └── customer # customer part (folder name can be customized)
 │           └── home # home.html
-│               ├── app.html
-│               ├── app.js
-│               └── app.vue
-├── LICENSE
-├── .babelrc          # babel config (es2015 default)
-├── .eslintrc.js      # eslint config (eslint-config-vue default)
-├── server.js         # port 2333
+│               ├── home.html
+│               ├── home.js
+│               └── home.vue
+├── .babelrc
+├── .editorconfig
+├── .gitignore
+├── index.html
 ├── package.json
-├── postcss.config.js # postcss (autoprefixer default)
-├── webpack.config.js
 └── README.md
 ```
 
