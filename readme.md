@@ -10,6 +10,110 @@
 * `axios`：[https://github.com/mzabriskie/axios](https://github.com/mzabriskie/axios)
 * `webpack`：[https://github.com/webpack](https://github.com/webpack)
 
+
+## Root Folder Structure
+```bash
+├── build
+│   ├── build.js
+│   ├── check-versions.js
+│   ├── dev-client.js
+│   ├── dev-server.js
+│   ├── utils.js
+│   ├── vue-loader.conf.js
+│   ├── webpack.base.conf.js
+│   ├── webpack.dev.conf.js
+│   ├── webpack.prod.conf.js
+│   └── webpack.test.conf.js
+├── config
+│   ├── dev.env.js
+│   ├── index.js
+│   ├── prod.env.js
+│   └── test.env.js
+├── src
+│   ├── assets  # common assets folder
+│   │   ├── img
+│   │   │   └── logo.png
+│   │   ├── js
+│   │   └── css
+│   ├── components # common components folder
+│   │   ├── Footer.vue
+│   │   ├── Header.vue
+│   │   └── Index.vue
+│   └── router
+│       └── index.js
+├── static
+│   └── .gitkeep
+├── .babelrc          # babel config (es2015 default)
+├── .editorconfig
+├── .gitignore
+├── .postcssrc.js
+├── index.html
+├── package.json
+└── README.md         # readme
+```
+
+## [API Proxying During Development](https://vuejs-templates.github.io/webpack/proxy.html)
+>When integrating this boilerplate with an existing backend, a common need is to access the backend API when using the dev server. To achieve that, we can run the dev server and the API backend side-by-side (or remotely), and let the dev server proxy all API requests to the actual backend.
+> [gitbooks](https://lvyongbo.gitbooks.io/vuejs-templates/content/proxy.html)
+
+```javascript
+// config/index.js
+module.exports = {
+  // ...
+  dev: {
+    proxyTable: {
+      // proxy all requests starting with /api to jsonplaceholder
+      '/api': {
+        target: 'http://jsonplaceholder.typicode.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  }
+}
+```
+
+## PHP Server data
+```php
+<?php
+  $array = array(
+    0 => array(
+    "NEWSID"=>1,
+     "NEWSTYPE"=>1,
+     "IMGURL"=>"./static/image/m-img/slider1.jpg",
+     "CITY"=>1
+    ),
+    1 => array(
+    "NEWSID"=>2,
+     "NEWSTYPE"=>1,
+     "IMGURL"=>"./static/image/m-img/slider2.jpg",
+     "CITY"=>1
+    )
+  );
+
+  echo json_encode($array);
+?>
+```
+Output
+```javascript
+[
+    {
+        "NEWSID": 1,
+        "NEWSTYPE": 1,
+        "IMGURL": "./static/image/m-img/slider1.jpg",
+        "CITY": 1
+    },
+    {
+        "NEWSID": 2,
+        "NEWSTYPE": 1,
+        "IMGURL": "./static/image/m-img/slider2.jpg",
+        "CITY": 1
+    }
+]
+```
+
 ## HTML5 History 模式
 `vue-router` 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。
 
@@ -52,46 +156,6 @@ location / {
 }
 ```
 
-## Root Folder Structure
-```bash
-├── build
-│   ├── build.js
-│   ├── check-versions.js
-│   ├── dev-client.js
-│   ├── dev-server.js
-│   ├── utils.js
-│   ├── vue-loader.conf.js
-│   ├── webpack.base.conf.js
-│   ├── webpack.dev.conf.js
-│   ├── webpack.prod.conf.js
-│   └── webpack.test.conf.js
-├── config
-│   ├── dev.env.js
-│   ├── index.js
-│   ├── prod.env.js
-│   └── test.env.js
-├── src
-│   ├── assets  # common assets folder
-│   │   ├── img
-│   │   │   └── logo.png
-│   │   ├── js
-│   │   └── css
-│   ├── components # common components folder
-│   │   ├── Footer.vue
-│   │   ├── Header.vue
-│   │   └── Index.vue
-│   └── router
-│       └── index.js
-├── static
-│   └── .gitkeep
-├── .babelrc          # babel config (es2015 default)
-├── .editorconfig
-├── .gitignore
-├── .postcssrc.js
-├── index.html
-├── package.json
-└── README.md         # readme
-```
 
 ***
 
