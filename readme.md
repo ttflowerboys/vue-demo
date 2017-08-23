@@ -1,6 +1,6 @@
 # vue-zwy-mobile
 
-> 基于`Vue`的单页应用。文档请看：[Webpack](see http://vuejs-templates.github.io/webpack for documentation.)
+> 基于`Vue`的单页应用。文档请看：[Webpack](http://vuejs-templates.github.io/webpack)
 
 ##  技术栈
 * `vue`：[https://github.com/vuejs/vue](https://github.com/vuejs/vue)
@@ -112,6 +112,19 @@ Output
         "CITY": 1
     }
 ]
+```
+
+## prerender-spa-plugin
+* [prerender-spa-plugin](https://www.npmjs.com/package/prerender-spa-plugin)
+
+```javascript
+// build/webpack.prod.conf.js
+var PrerenderSpaPlugin = require('prerender-spa-plugin')
+
+new PrerenderSpaPlugin(
+  Path.join(__dirname, '../dist'),
+  [ '/' ]
+)
 ```
 
 ## HTML5 History 模式
