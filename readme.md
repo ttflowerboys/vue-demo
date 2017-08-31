@@ -10,6 +10,18 @@
 * `axios`：[https://github.com/mzabriskie/axios](https://github.com/mzabriskie/axios)
 * `webpack`：[https://github.com/webpack](https://github.com/webpack)
 
+## bug
+错误提示
+```bash
+$ cnpm install
+[npminstall:get] retry GET http://registry.npm.taobao.org/selenium-server/download/selenium-server-3.5.2.tgz after 100ms, retry left 4, error: ResponseTimeoutError: Response timeout for 60000ms, GET https://cdn.npm.taobao.org/selenium-server/-/selenium-server-3.5.2.tgz 200 (connected: true, keepalive socket: false, agent status: {"createSocketCount":3,"createSocketErrorCount":0,"closeSocketCount":3,"errorSocketCount":0,"timeoutSocketCount":2,"requestCount":3,"freeSockets":{},"sockets":{},"requests":{}})
+headers: {"server":"Tengine","content-type":"application/octet-stream","content-length":"19328248","connection":"keep-alive","date":"Wed, 30 Aug 2017 08:37:55 GMT","x-oss-request-id":"59A6796312058DF222CBCF82","accept-ranges":"bytes","etag":"\"B6B3E78C27FD39DD9234AFD822368450\"","last-modified":"Sat, 26 Aug 2017 08:35:33 GMT","x-oss-object-type":"Normal","x-oss-hash-crc64ecma":"13154839708924026398","x-oss-storage-class":"Standard","cache-control":"max-age=0, s-maxage=86400","content-md5":"trPnjCf9Od2SNK/YIjaEUA==","x-oss-server-time":"3","via":"cache10.l2et15[0,304-0,H], cache8.l2et15[1,0], kunlun3.cn288[0,200-0,H], kunlun3.cn288[2,0]","age":"61826","x-cache":"HIT TCP_HIT dirn:2:922752046","x-swift-savetime":"Wed, 30 Aug 2017 08:38:23 GMT","x-swift-cachetime":"86372","timing-allow-origin":"*","eagleid":"d3a236a915041441011946084e"}
+
+```
+解决方案：
+```bash
+npm install babel-runtime --save
+```
 
 ## Root Folder Structure
 ```bash

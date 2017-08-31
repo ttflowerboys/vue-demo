@@ -12,6 +12,7 @@
     "test": "npm run e2e"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "vue": "^2.3.3",
     "vue-router": "^2.3.1"
   },
